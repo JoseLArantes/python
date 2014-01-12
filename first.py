@@ -5,4 +5,3 @@ with urlopen('http://sixty-north.com/c/t.txt') as story:
     line_words = line.decode('utlf-8').split()
     for word in line_words:
       story_words.append(word)
-	println"test";
