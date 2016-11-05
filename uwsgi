@@ -12,7 +12,7 @@
 ###########################
 PROG=/usr/bin/uwsgi
 DESC=uWSGI
-DAEMON_OPTS="--ini /etc/uwsgi/portaldaindustria/cms.ini"
+DAEMON_OPTS="--ini /etc/uwsgi/apps-enabled/*.ini"
 lockfile=/var/lock/subsys/uwsgi
 
 start () {
