@@ -17,3 +17,24 @@ source virtualenvwrapper.sh
 workon portaldaindustria
 pip install --upgrade pip
 pip install -r https://raw.githubusercontent.com/JoseLArantes/python/master/cmsrequirements.txt
+
+sudo mkdir -p /etc/uwsgi/apps-enabled
+cd /etc/uwsgi/apps-enabled
+sudo wget https://raw.githubusercontent.com/JoseLArantes/python/master/cms.ini
+
+cd /etc/init.d
+sudo wget https://raw.githubusercontent.com/JoseLArantes/python/master/uwsgi
+
+sudo chmod +x uwsgi
+sudo ln -s /usr/local/bin/uwsgi /usr/bin/
+sudo mkdir -p /var/app/nginx/nginx_temp
+sudo mkdir -p /var/app/nginx/nginx_cache
+sudo chown nginx: /var/app/nginx -R
+cd /etc/nginx
+sudo mv nginx.conf nginx.conf.bkp
+sudo wget https://raw.githubusercontent.com/JoseLArantes/python/master/nginx.conf
+cd conf.d/
+wget sudo wget https://raw.githubusercontent.com/JoseLArantes/python/master/cms.nginx.conf
+sudo rm -rf virtual.conf
+sudo chkconfig nginx on
+sudo chkconfig uwsgi on
